@@ -1,7 +1,7 @@
 // src/App.tsx
 import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Loader from './components/Loader'; // Ensure the path is correct
+import Loader from './components/Loader';
 
 const LandingPage = lazy(() => import('./pages/LandingPage'));
 const LoginPage = lazy(() => import('./pages/LoginPage'));
