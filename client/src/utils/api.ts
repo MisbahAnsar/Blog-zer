@@ -1,7 +1,10 @@
+import axios from "axios";
+
 // src/utils/api.ts
 const API_URL = 'http://localhost:5000/api';
 
 export const api = {
+
   signup: async (data: { username: string; email: string; password: string }) => {
     const response = await fetch(`${API_URL}/users/register`, {
       method: 'POST',
@@ -10,6 +13,7 @@ export const api = {
     });
     return response.json();
   },
+  
   login: async (data: { email: string; password: string }) => {
     const response = await fetch(`${API_URL}/users/login`, {
       method: 'POST',
@@ -23,8 +27,14 @@ export const api = {
     }
     return result;
   },
+
   logout: () => {
     localStorage.removeItem('token'); // Remove token
     localStorage.removeItem('loginTime'); // Remove login time
+  },
+
+  allblogs: async () => {
+    const response = await axios.get(`${API_URL}/posts/`);
+    return response.data;
   }
 };

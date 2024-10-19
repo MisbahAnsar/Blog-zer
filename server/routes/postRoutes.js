@@ -6,7 +6,7 @@ const { protect } = require('../middlewares/authMiddleware');
 const router = express.Router();
 
 router.post('/create', protect, createPost);
-router.delete('/delete/:id', protect, deletePost);
+router.delete('/:id', protect, deletePost);
 router.get('/', getPosts);
 
 module.exports = router;

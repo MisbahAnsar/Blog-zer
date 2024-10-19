@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { api } from '../utils/api';
+import { ModeToggle } from '../components/mode-toggle';
 
 const Button = ({ children, variant = 'primary', ...props }) => (
   <button
@@ -17,12 +18,6 @@ const Button = ({ children, variant = 'primary', ...props }) => (
   </button>
 );
 
-const Input = (props) => (
-  <input
-    className="px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-    {...props}
-  />
-);
 
 export default function LandingPage() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -66,8 +61,13 @@ export default function LandingPage() {
     }
   };
 
+  const handleGetStarted = () => {
+    navigate('/allblogs')
+  };
+
   return (
-    <div className="flex flex-col h-full bg-white text-black">
+    <div className="flex h-screen flex-col bg-white dark:bg-black text-black dark:text-white">
+            <div className="absolute top-0 left-0 -right-40 w-40 h-[100%] bg-blue-500 opacity-20 rotate-12 blur-3xl pointer-events-none"></div>
       <header className="px-4 lg:px-6 h-14 flex items-center lg:mx-20">
         <a className="flex items-center justify-center" href="#">
           <svg
@@ -86,7 +86,7 @@ export default function LandingPage() {
             <path d="M22 3v7h-7" />
             <path d="M22 3 12 13" />
           </svg>
-          <span className="font-bold">BloggerPro</span>
+          <span className="font-bold">Blog-zer</span>
         </a>
         <div className="ml-auto flex items-center space-x-2">
           {isLoggedIn ? (
@@ -103,11 +103,13 @@ export default function LandingPage() {
               </Button>
             </>
           )}
+
+          <ModeToggle />
         </div>
       </header>
       <main className="flex-1">
         <section className="w-full py-24 md:py-40 lg:py-48 xl:py-48">
-          <div className="container px-4 md:px-6">
+          <div className="px-20 md:px-6">
             <div className="flex flex-col items-center space-y-4 text-center">
               <div className="space-y-2">
                 <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tighter">
@@ -118,7 +120,7 @@ export default function LandingPage() {
                 </p>
               </div>
               <div className="space-x-2 sm:space-x-4">
-                <Button>Get Started</Button>
+                <Button onClick={handleGetStarted}>Get Started</Button>
                 <Button variant="outline">Learn More</Button>
               </div>
             </div>

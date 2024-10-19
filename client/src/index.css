@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@layer base {
+  :root {
+    --radius: 0.5rem
+  }
+}
+
+.bg-primary\/5 {
+  background-color: hsl(var(--primary)/.05);
+}
+
+@font-face {
+  font-family: 'Supreme';
+  src: url('/Supreme-Regular/.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'MyFont', sans-serif;
+}
