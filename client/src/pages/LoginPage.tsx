@@ -14,7 +14,7 @@ const LoginPage: React.FC = () => {
     try {
       const response = await api.login({ email, password });
       if (response.token) {
-        navigate('/'); // Redirect to landing page
+        navigate('/');
       } else {
         setError('Invalid email or password');
       }

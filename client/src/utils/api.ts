@@ -52,5 +52,10 @@ export const api = {
     });
     console.log(response)
     return response.data;
+  },
+
+  createPost: async () => {
+    const response = await axios.post(`{API_URL}/posts/create`);
+    return response;
   }
 };
