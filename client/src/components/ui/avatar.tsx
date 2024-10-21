@@ -5,7 +5,7 @@ const generateRandomAvatar = () => {
   return `https://api.dicebear.com/9.x/pixel-art/svg?seed=${randomSeed}`;
 };
 
-const Avatar = () => {
+const Avatar = ({ width = 40, height = 40 }) => {
   const [avatarUrl, setAvatarUrl] = useState('');
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const Avatar = () => {
   return (
     <div>
         <span>
-          <img src={avatarUrl} alt="Random Avatar" width="40" height="40" />
+          <img src={avatarUrl} alt="Random Avatar" width={width} height={height} style={{ objectFit: 'cover' }} />
         </span>
     </div>
   );

@@ -36,5 +36,21 @@ export const api = {
   allblogs: async () => {
     const response = await axios.get(`${API_URL}/posts/`);
     return response.data;
+  },
+
+  getUser: async () => {
+    const token = localStorage.getItem('token');
+    console.log("token rusing:", token);
+    if (!token) {
+      throw new Error('No token found');
+    }
+
+    const response = await axios.get(`${API_URL}/users/getUser`, {
+      headers: {
+        Authorization: `Bearer ${token}`  // Include the token in request headers
+      }
+    });
+    console.log(response)
+    return response.data;
   }
 };

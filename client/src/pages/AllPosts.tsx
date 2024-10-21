@@ -5,6 +5,7 @@ import { api } from "../utils/api";
 import { Search, Loader2, Calendar, User } from "lucide-react"
 import { ModeToggle } from "../components/mode-toggle";
 import '../index.css'
+import { Back } from "@/components/Back";
 
 interface Post {
   _id: string;
@@ -51,15 +52,14 @@ const AllPosts = () => {
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    // Search is handled by the useEffect above
   };
 
   return (
     <div className="bg-white text-black dark:bg-black dark:text-white min-h-screen p-4 sm:p-8 md:p-12 lg:p-16 relative overflow-hidden">
       {/* Narrower blue light effect */}
       <div className="absolute top-0 left-0 -right-40 w-40 h-[100%] bg-blue-500 opacity-20 rotate-12 blur-3xl pointer-events-none"></div>
-      
       <div className="max-w-4xl mx-auto relative z-10">
+        <Back />
         <ModeToggle />
         <h1 className="text-4xl text-center font-serif mb-12 relative">
           <span className="bg-gradient-to-r from-black via-gray-700 to-black dark:bg-gradient-to-r dark:from-white dark:via-gray-300 dark:to-white bg-clip-text text-transparent">

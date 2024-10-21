@@ -2,21 +2,7 @@
 import { useNavigate } from "react-router-dom";
 // import { api } from '../utils/api';
 import Navbar from "./Navbar";
-
-const Button = ({ children, variant = "primary", ...props }) => (
-  <button
-    className={`px-4 py-2 rounded ${
-      variant === "primary"
-        ? "bg-blue-600 text-white hover:bg-blue-700"
-        : variant === "danger"
-        ? "bg-red-500 text-white hover:bg-red-600"
-        : "bg-white text-blue-600 border border-blue-600 hover:bg-blue-50"
-    }`}
-    {...props}
-  >
-    {children}
-  </button>
-);
+import { Button } from "@/components/ui/button";
 
 export default function LandingPage() {
 
@@ -32,7 +18,7 @@ export default function LandingPage() {
       <Navbar />
       <main className="flex-1">
         <section className="w-full py-24 md:py-40 lg:py-48 xl:py-48">
-          <div className="px-20 md:px-6">
+          <div className="px-12 md:px-6">
             <div className="flex flex-col items-center space-y-4 text-center">
               <div className="space-y-2">
                 <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tighter">

@@ -38,7 +38,7 @@ const Navbar = () => {
     };
   
   return (
-    <div>
+    <div className='dark:bg-black dark:text-white bg-white text-black'>
         <header className="px-4 lg:px-6 h-14 flex items-center lg:mx-20">
         <a className="flex items-center justify-center" href="#">
           <svg

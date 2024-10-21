@@ -37,7 +37,10 @@ export default function DropdownMenuCheckboxes({
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline" className="outline-none">
+          <div>
           <Avatar />
+          </div>
+          
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56 mr-7">
