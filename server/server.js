@@ -17,8 +17,9 @@ app.use(express.json());
 app.use(cors({
     origin: "https://blogzerv0.vercel.app",
     credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
+    exposedHeaders: ['Authorization'],
 }));
 
 
