@@ -3,7 +3,8 @@ import DialogButton from "@/components/DialogButton";
 import Avatar from "@/components/ui/avatar";
 import { useEffect, useState } from "react";
 import { api } from "../utils/api";
-import { Search } from "lucide-react"; // Import the Search icon
+import { Search } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface Post {
   _id: string;
@@ -102,7 +103,7 @@ const UserProfile = () => {
             ) : (
               <>
                 <form
-                  className="flex flex-col sm:flex-row gap-2 mb-4 justify-center items-center sm:items-stretch w-full max-w-md sm:max-w-full mx-auto"
+                  className="flex sm:flex-row gap-2 mb-4 justify-center items-center sm:items-stretch w-full max-w-md sm:max-w-full mx-auto"
                   onSubmit={(e) => {
                     e.preventDefault();
                   }}
@@ -127,7 +128,7 @@ const UserProfile = () => {
                     <DialogButton
                       onNewPost={handleNewPost}
                       buttonText="Create"
-                    />
+                    />{}
                   </button>
                 </form>
 

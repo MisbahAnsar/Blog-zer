@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import { api } from "../utils/api";
 import { Search, Loader2, Calendar, User, X } from "lucide-react";
-import { ModeToggle } from "../components/mode-toggle";
 import '../index.css';
-import { Back } from "@/components/Back";
 import Navbar from "./Navbar";
 
 interface Post {
@@ -137,29 +135,22 @@ const AllPosts = () => {
 
       {/* Modal for displaying post details */}
       {isModalOpen && selectedPost && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-20">
-        <div className="bg-white dark:bg-gray-800 p-6 rounded-lg max-w-lg w-full max-h-[90vh] flex flex-col">
-          {/* Modal Header */}
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-20 mx-4">
+        <div className="bg-white dark:bg-gray-800 p-6 rounded-lg max-w-lg w-full max-h-[80vh] flex flex-col">
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
-              {selectedPost.title}
-            </h2>
-            <button
-              onClick={closeModal}
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">{selectedPost.title}</h2>
+            <button 
+              onClick={closeModal} 
               aria-label="Close modal"
-              className="focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 rounded-full p-1"
+              className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 rounded-full p-1"
             >
-              <X className="w-6 h-6 text-gray-600 dark:text-gray-300" />
+              <X className="w-6 h-6" />
             </button>
           </div>
-          {/* Scrollable Content */}
-          <div className="overflow-y-auto flex-grow mb-4 pr-2 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 dark:scrollbar-thumb-gray-600 dark:scrollbar-track-gray-700">
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              {selectedPost.content}
-            </p>
+          <div className="overflow-y-auto flex-grow mb-4 pr-2">
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">{selectedPost.content}</p>
           </div>
-          {/* Footer */}
-          <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400">
+          <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400 pt-4 border-t border-gray-200 dark:border-gray-700">
             <p>By: {selectedPost.author.username}</p>
             <p>{new Date(selectedPost.createdAt).toLocaleDateString()}</p>
           </div>

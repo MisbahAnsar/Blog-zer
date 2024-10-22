@@ -50,9 +50,9 @@ export default function DropdownMenuCheckboxes({
         <DropdownMenuCheckboxItem className="font-mono">Coming soon ~</DropdownMenuCheckboxItem>
         {/* <DropdownMenuCheckboxItem>Panel</DropdownMenuCheckboxItem> */}
         <DropdownMenuSeparator />
-        <Button onClick={handleLogout} variant="danger">
+        <button className="font-mono mx-2" onClick={handleLogout}>
           Logout
-        </Button>
+        </button>
       </DropdownMenuContent>
     </DropdownMenu>
   );

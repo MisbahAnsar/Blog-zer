@@ -30,7 +30,7 @@ export default function LandingPage() {
                 </p>
               </div>
               <div className="space-x-2 sm:space-x-4">
-                <Button onClick={handleGetStarted}>Get Started</Button>
+                <Button onClick={handleGetStarted}>All Blogs</Button>
                 <Button variant="outline">Learn More</Button>
               </div>
             </div>
