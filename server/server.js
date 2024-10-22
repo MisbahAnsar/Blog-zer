@@ -15,7 +15,7 @@ const app = express();
 
 // Use CORS middleware
 app.use(cors({
-    origin: "https://Blogzerv0.vercel.app",
+    origin: "https://blogzerv0.vercel.app",
     credentials: true,
 }));
 app.use(express.json());
