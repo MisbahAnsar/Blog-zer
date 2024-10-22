@@ -21,6 +21,17 @@ exports.getPosts = async (req, res) => {
   }
 };
 
+exports.getUserPosts = async(req, res) => {
+  try {
+    const userId = req.user.id;
+
+    const userPosts = await Post.find({ author: userId }).populate('author', 'username');
+    res.status(200).json(userPosts);
+  } catch(error){
+    res.status(500).json({message: "Cannot retrieve posts, please try again"})
+  }
+}
+
 exports.deletePost = async (req, res) => {
   try {
     // Debugging: Log the request params

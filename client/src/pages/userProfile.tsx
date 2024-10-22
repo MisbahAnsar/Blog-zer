@@ -5,7 +5,8 @@ import { useEffect, useState } from "react";
 import { api } from "../utils/api";
 
 const userProfile = () => {
-  const [username, setUsername] = useState<string | null>(null);  // Only store the username
+  const [username, setUsername] = useState<string | null>(null);
+  const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -23,6 +24,18 @@ const userProfile = () => {
 
     fetchUsername();
   }, []);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try{
+        const postData = await api.getUserPosts();
+        setPosts(postData.data);
+      } catch(error){
+        setError(error.message || 'Failed to retrieve posts, please try again');
+      }
+    };
+    fetchPosts();
+  }, [])
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
@@ -52,6 +65,16 @@ const userProfile = () => {
             <h2 className="text-2xl gap-3 font-semibold">Start Your First Blog</h2>
 
             <DialogButton />
+
+            {Array.isArray(posts) && posts.length > 0 ? (
+    posts.map((post) => (
+      <div key={post._id} className="bg-white">
+        <div className="bg-pink-400">{post.title}</div>
+      </div>
+    ))
+  ) : (
+    <p>No posts available</p>
+  )}
           </div>
         </div>
       </div>

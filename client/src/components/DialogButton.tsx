@@ -37,22 +37,29 @@ const DialogButton = () => {
     fetchUsername();
   }, []);
 
-  const handleSubmit = async (e: React.FormEvent) => { 
-    e.preventDefault;
-    try{
-      const response = await api.createPost({title, content});
+  const handleSubmit = async () => {
+    setLoading(true);
+    try {
+      const response = await api.createPost({
+        title,
+        content
+      }); // Call your createPost API method with the data
+      
+      // Reset the form if the post is successful
       setTitle("");
       setContent("");
-      alert("Post created successfull");
-    } catch(error) {
-      setError(error.message || "failed to create post")
-    } finally{
+      alert("Post created successfully!");
+
+    } catch (error: any) {
+      setError(error.message || "Failed to create post");
+    } finally {
       setLoading(false);
     }
-  }
+  };
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
+
   return (
     <div className="gap-4 items-center">
       <Dialog>
@@ -72,18 +79,18 @@ const DialogButton = () => {
           </DialogHeader>
           <div className="grid gap-4 py-4 bg-white text-black dark:bg-black dark:text-white">
             <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="name" className="text-right font-semibold font-mono">
+              <Label htmlFor="title" className="text-right font-semibold font-mono">
                 Title
               </Label>
               <Input
                 id="title"
                 value={title}
-                onChange={(e) =>setTitle(e.target.value)}
+                onChange={(e) => setTitle(e.target.value)}
                 className="col-span-3 tracking-wide"
               />
             </div>
             <div className="grid grid-cols-4 items-start gap-4">
-              <Label htmlFor="username" className="text-right font-semibold font-mono tracking-wider">
+              <Label htmlFor="content" className="text-right font-semibold font-mono tracking-wider">
                 Content
               </Label>
               <textarea
@@ -91,7 +98,6 @@ const DialogButton = () => {
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
                 className="col-span-3 border border-gray-700 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 scrollbar-track-transparent rounded-md p-2 bg-white text-black dark:bg-black dark:text-white resize-none"
-                rows={1}
                 style={{
                   lineHeight: "1.5",
                   minHeight: "10rem",
@@ -107,8 +113,11 @@ const DialogButton = () => {
             </div>
           </div>
           <DialogFooter>
-            <Button type="submit">Post</Button>
+            <Button type="submit" onClick={handleSubmit} disabled={loading}>
+              {loading ? "Posting..." : "Post"}
+            </Button>
           </DialogFooter>
+          {error && <div className="text-red-500">{error}</div>}
         </DialogContent>
       </Dialog>
     </div>

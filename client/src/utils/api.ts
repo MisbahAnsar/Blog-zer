@@ -54,8 +54,23 @@ export const api = {
     return response.data;
   },
 
-  createPost: async () => {
-    const response = await axios.post(`{API_URL}/posts/create`);
+  createPost: async (data: { title: string, content: string }) => {
+    const token = localStorage.getItem('token');
+    const response = await axios.post(`${API_URL}/posts/create`, data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response;
+  },
+
+  getUserPosts: async () => {
+    const token = localStorage.getItem('token');
+    const response = await axios.get(`{API_URL}/posts/myposts`,{
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     return response;
   }
-};
+};  
