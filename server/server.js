@@ -14,8 +14,10 @@ connectDB();
 const app = express();
 
 // Use CORS middleware
-app.use(cors());
-
+app.use(cors({
+    origin: "https://Blogzerv0.vercel.app",
+    credentials: true,
+}));
 app.use(express.json());
 
 //Routes
