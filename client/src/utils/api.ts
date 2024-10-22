@@ -19,7 +19,9 @@ export const api = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
+      credentials: 'include',
     });
+    
     const result = await response.json();
     if (result.token) {
       localStorage.setItem('token', result.token); // Store token
