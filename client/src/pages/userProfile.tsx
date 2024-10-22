@@ -4,9 +4,8 @@ import Avatar from "@/components/ui/avatar";
 import { useEffect, useState } from "react";
 import { api } from "../utils/api";
 import { Search } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
-interface Post {
+export interface Post {
   _id: string;
   title: string;
   content: string;
@@ -45,7 +44,7 @@ const UserProfile = () => {
         const postData = await api.getUserPosts();
         setPosts(postData.data);
         setFilteredPosts(postData.data); // Initialize filtered posts
-      } catch (error) {
+      } catch (error: any) {
         setError(error.message || "Failed to retrieve posts, please try again");
       }
     };

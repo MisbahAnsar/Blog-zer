@@ -14,6 +14,7 @@ import { Label } from "@/components/ui/label";
 import { useEffect, useState } from "react";
 import { api } from "../utils/api";
 import Avatar from "./ui/avatar";
+import { Post } from '../lib/type';
 
 interface DialogButtonProps {
   onNewPost: (post: Post) => void;
