@@ -1,4 +1,5 @@
-import { Button } from "@/components/ui/button";
+// DialogButton.tsx
+import { Button } from "@/components/ui/button"; // Ensure you import Button from the right path
 import {
   Dialog,
   DialogContent,
@@ -14,19 +15,24 @@ import { useEffect, useState } from "react";
 import { api } from "../utils/api";
 import Avatar from "./ui/avatar";
 
-const DialogButton = () => {
-  
+interface DialogButtonProps {
+  onNewPost: (post: Post) => void;
+  buttonText: string;
+  className?: string;
+}
+
+const DialogButton: React.FC<DialogButtonProps> = ({ onNewPost, buttonText }) => {
   const [username, setUsername] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [title, setTitle] = useState<string>("");  // State for title
+  const [title, setTitle] = useState<string>("");  
   const [content, setContent] = useState<string>("");
 
   useEffect(() => {
     const fetchUsername = async () => {
       try {
-        const userData = await api.getUser(); // Fetch authenticated user
-        setUsername(userData.username);  // Only set the username
+        const userData = await api.getUser();
+        setUsername(userData.username);
       } catch (error: any) {
         setError(error.message || "Failed to fetch user.");
       } finally {
@@ -43,13 +49,10 @@ const DialogButton = () => {
       const response = await api.createPost({
         title,
         content
-      }); // Call your createPost API method with the data
-      
-      // Reset the form if the post is successful
+      });
+      onNewPost(response.data);
       setTitle("");
       setContent("");
-      alert("Post created successfully!");
-
     } catch (error: any) {
       setError(error.message || "Failed to create post");
     } finally {
@@ -64,13 +67,12 @@ const DialogButton = () => {
     <div className="gap-4 items-center">
       <Dialog>
         <DialogTrigger asChild>
-          <Button variant="outline" className="text-md mt-1">Write now</Button>
+          <Button className="p-5 text-md" variant="outline">{buttonText}</Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[500px] max-w-[350px]">
           <DialogHeader>
-            <DialogTitle 
-              className="text-start text-xl flex gap-1 tracking-wider">
-              <Avatar width={29} height={29} /> 
+            <DialogTitle className="text-start text-xl flex gap-1 tracking-wider">
+              <Avatar width={29} height={29} />
               @{username || "Username"}
             </DialogTitle>
             <DialogDescription className="text-md text-start">
@@ -96,8 +98,9 @@ const DialogButton = () => {
               <textarea
                 id="content"
                 value={content}
+                placeholder="write here..."
                 onChange={(e) => setContent(e.target.value)}
-                className="col-span-3 border border-gray-700 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 scrollbar-track-transparent rounded-md p-2 bg-white text-black dark:bg-black dark:text-white resize-none"
+                className="box-size-textarea col-span-3 border border-gray-700 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 scrollbar-track-transparent rounded-md p-2 bg-white text-black dark:bg-black dark:text-white resize-none"
                 style={{
                   lineHeight: "1.5",
                   minHeight: "10rem",
@@ -105,7 +108,7 @@ const DialogButton = () => {
                   boxSizing: "border-box",
                 }}
                 onInput={(e) => {
-                  const textarea = e.target;
+                  const textarea = e.target as HTMLTextAreaElement;
                   textarea.style.height = "auto";
                   textarea.style.height = `${textarea.scrollHeight}px`;
                 }}

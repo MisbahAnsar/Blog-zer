@@ -46,9 +46,9 @@ export default function DropdownMenuCheckboxes({
       <DropdownMenuContent className="w-56 mr-7">
         <DropdownMenuLabel>Blog-zer</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuCheckboxItem><button onClick={handleProfile}>Profile</button></DropdownMenuCheckboxItem>
-        <DropdownMenuCheckboxItem>Activity Bar</DropdownMenuCheckboxItem>
-        <DropdownMenuCheckboxItem>Panel</DropdownMenuCheckboxItem>
+        <DropdownMenuCheckboxItem className="font-mono"><button onClick={handleProfile}>Profile</button></DropdownMenuCheckboxItem>
+        <DropdownMenuCheckboxItem className="font-mono">Coming soon ~</DropdownMenuCheckboxItem>
+        {/* <DropdownMenuCheckboxItem>Panel</DropdownMenuCheckboxItem> */}
         <DropdownMenuSeparator />
         <Button onClick={handleLogout} variant="danger">
           Logout

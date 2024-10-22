@@ -13,7 +13,7 @@ export default function LandingPage() {
   };
 
   return (
-    <div className="flex h-screen flex-col bg-white dark:bg-black text-black dark:text-white">
+    <div className="flex h-screen flex-col bg-white dark:bg-black text-black dark:text-white font-mono tracking-tighter">
       <div className="absolute top-0 left-0 -right-40 w-40 h-[100%] bg-blue-500 opacity-20 rotate-12 blur-3xl pointer-events-none"></div>
       <Navbar />
       <main className="flex-1">

@@ -32,10 +32,10 @@
 @font-face {
   font-family: 'Supreme';
   src: url('/Supreme-Regular/.ttf') format('ttf');
-  font-weight: normal;
+  font-weight: medium;
   font-style: normal;
 }
 
 body {
-  font-family: 'MyFont', sans-serif;
+  font-family: 'Supreme', sans-serif;
 }

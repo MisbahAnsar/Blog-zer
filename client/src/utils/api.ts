@@ -50,7 +50,6 @@ export const api = {
         Authorization: `Bearer ${token}`  // Include the token in request headers
       }
     });
-    console.log(response)
     return response.data;
   },
 
@@ -66,11 +65,12 @@ export const api = {
 
   getUserPosts: async () => {
     const token = localStorage.getItem('token');
-    const response = await axios.get(`{API_URL}/posts/myposts`,{
+    const response = await axios.get(`${API_URL}/posts/myposts`,{
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
+    console.log(response)
     return response;
   }
 };  
