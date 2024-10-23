@@ -26,7 +26,7 @@ export const api = {
     const result = await response.json();
     if (result.token) {
       localStorage.setItem('token', result.token); // Store token
-      localStorage.setItem('loginTime', new Date().toISOString());
+      localStorage.setItem('loginTime', new Date().toISOString()); // Store login time
     }
     return result;
   },
@@ -72,6 +72,7 @@ export const api = {
         Authorization: `Bearer ${token}`,
       },
     });
+    console.log(response)
     return response;
   }
 };  
