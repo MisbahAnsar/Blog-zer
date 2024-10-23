@@ -17,9 +17,14 @@ app.use(cors({
     origin: "https://blogzerv0.vercel.app",
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Origin'],
 }));
 app.use(express.json());
+
+app.get('/', (_req, res) => {
+    res.send("hello from server")
+ 
+ });
 
 //Routes
 app.use('/api/users', userRoutes);
