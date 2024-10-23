@@ -13,15 +13,14 @@ connectDB();
 
 const app = express();
 
-app.use(express.json());
+// Use CORS middleware
 app.use(cors({
     origin: "https://blogzerv0.vercel.app",
     credentials: true,
-    // methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    // allowedHeaders: ['Content-Type', 'Authorization'],
-    // exposedHeaders: ['Authorization'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
 }));
-
+app.use(express.json());
 
 //Routes
 app.use('/api/users', userRoutes);
