@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Loader from './components/Loader';
 import AllPosts from './pages/AllPosts';
 import { ThemeProvider } from "./components/theme-provider";
-import { Switch } from 'react-router-dom';
 
 const LandingPage = lazy(() => import('./pages/LandingPage'));
 const LoginPage = lazy(() => import('./pages/LoginPage'));
@@ -15,17 +14,15 @@ const App: React.FC = () => {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <Router>
-        <Switch>
         <Suspense fallback={<Loader />}>
             <Routes>
               <Route path="/" element={<LandingPage />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/signup" element={<SignupPage />} />
               <Route path="/allblogs" element={<AllPosts />} />
-              <Route path="/profile" element={<ProfilePage />} /> {/* Add profile route */}
+              <Route path="/profile" element={<ProfilePage />} />
             </Routes>
         </Suspense>
-        </Switch>
       </Router>
     </ThemeProvider>
   );
