@@ -32,8 +32,8 @@ export const api = {
   },
 
   logout: () => {
-    localStorage.removeItem('token'); // Remove token
-    localStorage.removeItem('loginTime'); // Remove login time
+    localStorage.removeItem('token');
+    localStorage.removeItem('loginTime');
   },
 
   allblogs: async () => {
@@ -72,7 +72,6 @@ export const api = {
         Authorization: `Bearer ${token}`,
       },
     });
-    console.log(response)
     return response;
   }
 };  

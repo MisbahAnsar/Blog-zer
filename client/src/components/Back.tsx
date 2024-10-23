@@ -7,7 +7,6 @@ export function Back() {
   const handleGoBack = () => {
     window.history.back();
     navigate('/');
-    console.log("meow");
   };
 
   return (

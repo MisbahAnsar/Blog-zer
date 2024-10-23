@@ -32,7 +32,6 @@ const AllPosts = () => {
         setPosts(response);
         setFilteredPosts(response);
       } catch (error) {
-        console.error("Error fetching blogs:", error);
         setError("Failed to fetch blogs. Please try again later.");
       } finally {
         setIsLoading(false);
