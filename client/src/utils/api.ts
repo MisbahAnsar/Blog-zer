@@ -26,7 +26,7 @@ export const api = {
     const result = await response.json();
     if (result.token) {
       localStorage.setItem('token', result.token); // Store token
-      localStorage.setItem('loginTime', new Date().toISOString()); // Store login time
+      localStorage.setItem('loginTime', new Date().toISOString());
     }
     return result;
   },
@@ -43,14 +43,13 @@ export const api = {
 
   getUser: async () => {
     const token = localStorage.getItem('token');
-    console.log("token rusing:", token);
     if (!token) {
       throw new Error('No token found');
     }
 
     const response = await axios.get(`${API_URL}/users/getUser`, {
       headers: {
-        Authorization: `Bearer ${token}`  // Include the token in request headers
+        Authorization: `Bearer ${token}`
       }
     });
     return response.data;
@@ -73,7 +72,6 @@ export const api = {
         Authorization: `Bearer ${token}`,
       },
     });
-    console.log(response)
     return response;
   }
 };  
