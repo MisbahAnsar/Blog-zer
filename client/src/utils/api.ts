@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // src/utils/api.ts
-const API_URL = 'https://blogzer69.vercel.app/api';
+const API_URL = 'https://blogzers.vercel.app/api';
 
 export const api = {
 
