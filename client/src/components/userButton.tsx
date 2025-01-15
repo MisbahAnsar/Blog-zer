@@ -1,5 +1,3 @@
-"use client";
-
 import * as React from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -11,8 +9,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { api } from "@/utils/api";
-import Avatar from "@/components/ui/avatar";
+import { api } from "../utils/api";
+import Avatar from "./ui/avatar";
 
 interface DropdownMenuCheckboxesProps {
   setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
