@@ -22,7 +22,7 @@ app.use(cors({
 app.use(express.json());
 
 app.get('/', (_req, res) => {
-    res.send("hello from server")
+    // res.send("hello from server")
     res.send("hi from server")
  });
 

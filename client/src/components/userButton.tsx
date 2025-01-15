@@ -11,8 +11,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { api } from "../utils/api";
-import Avatar from "./ui/avatar";
+import { api } from "@/utils/api";
+import Avatar from "@/components/ui/avatar";
 
 interface DropdownMenuCheckboxesProps {
   setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
@@ -48,7 +48,6 @@ export default function DropdownMenuCheckboxes({
         <DropdownMenuSeparator />
         <DropdownMenuCheckboxItem className="font-mono"><button onClick={handleProfile}>Profile</button></DropdownMenuCheckboxItem>
         <DropdownMenuCheckboxItem className="font-mono">Coming soon ~</DropdownMenuCheckboxItem>
-        {/* <DropdownMenuCheckboxItem>Panel</DropdownMenuCheckboxItem> */}
         <DropdownMenuSeparator />
         <button className="font-mono mx-2" onClick={handleLogout}>
           Logout

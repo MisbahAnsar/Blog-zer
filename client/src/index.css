@@ -29,13 +29,6 @@
   background-color: hsl(var(--primary)/.05);
 }
 
-@font-face {
-  font-family: 'Supreme';
-  src: url('/Supreme-Regular/.ttf') format('ttf');
-  font-weight: medium;
-  font-style: normal;
-}
-
 body {
   font-family: 'Supreme', sans-serif;
 }
