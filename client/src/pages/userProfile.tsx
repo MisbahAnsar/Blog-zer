@@ -43,7 +43,7 @@ const UserProfile = () => {
       try {
         const postData = await api.getUserPosts();
         setPosts(postData.data);
-        setFilteredPosts(postData.data); // Initialize filtered posts
+        setFilteredPosts(postData.data);
       } catch (error: any) {
         setError(error.message || "Failed to retrieve posts, please try again");
       }
@@ -52,7 +52,6 @@ const UserProfile = () => {
   }, []);
 
   useEffect(() => {
-    // Filter posts based on search term
     const results = posts.filter(
       (post) =>
         post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -62,8 +61,8 @@ const UserProfile = () => {
   }, [searchTerm, posts]);
 
   const handleNewPost = (newPost: Post) => {
-    setPosts((prevPosts) => [newPost, ...prevPosts]); // Add new post to the beginning of the posts array
-    setFilteredPosts((prevPosts) => [newPost, ...prevPosts]); // Update filtered posts as well
+    setPosts((prevPosts) => [newPost, ...prevPosts]);
+    setFilteredPosts((prevPosts) => [newPost, ...prevPosts]);
   };
 
   if (loading) return <div>Loading...</div>;
