@@ -13,19 +13,19 @@ connectDB();
 
 const app = express();
 
-app.use(cors({
-    origin: 'http://localhost:5173', // Replace with your frontend URL
-    credentials: true, // Allow cookies and credentials
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-}));
-
 // app.use(cors({
-//     origin: "https://blogzers69.vercel.app",
-//     credentials: true,
+//     origin: 'http://localhost:5173', // Replace with your frontend URL
+//     credentials: true, // Allow cookies and credentials
 //     methods: ['GET', 'POST', 'PUT', 'DELETE'],
 //     allowedHeaders: ['Content-Type', 'Authorization'],
 // }));
+
+app.use(cors({
+    origin: "https://blogzers69.vercel.app",
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+}));
 
 app.use(express.json());
 
