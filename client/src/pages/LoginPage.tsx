@@ -132,42 +132,10 @@ function App() {
               </button>
             </div>
 
-            <div className="relative">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-300 dark:border-gray-700"></div>
-              </div>
-              <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white dark:bg-black text-gray-500">Or continue with</span>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-3">
-              <button
-                type="button"
-                className="flex items-center justify-center px-4 py-2 border border-gray-300 
-                         dark:border-gray-700 rounded-md shadow-sm text-sm font-medium 
-                         text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-800
-                         hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200"
-              >
-                <Github className="h-5 w-5 mr-2" />
-                GitHub
-              </button>
-              <button
-                type="button"
-                className="flex items-center justify-center px-4 py-2 border border-gray-300 
-                         dark:border-gray-700 rounded-md shadow-sm text-sm font-medium 
-                         text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-800
-                         hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200"
-              >
-                <Twitter className="h-5 w-5 mr-2" />
-                Twitter
-              </button>
-            </div>
-
             <div className="text-center text-sm">
               <span className="text-gray-500 dark:text-gray-400">Don't have an account?</span>
               {' '}
-              <a href="#" className="font-medium text-blue-500 hover:text-blue-400">
+              <a href="/signup" className="font-medium text-blue-500 hover:text-blue-400">
                 Sign up now
               </a>
             </div>

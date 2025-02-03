@@ -46,3 +46,95 @@ body {
     --tile: var(--neutral-900);
   }
 }
+
+/* 3D Grid Animation */
+.grid-container {
+  position: absolute;
+  width: 150%;
+  height: 100%;
+  perspective: 500px;
+  transform-style: preserve-3d;
+  left: -50%;
+  overflow: hidden;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  :root {
+    --radius: 0.5rem
+  ;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%}
+  .dark {
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%
+  }
+}
+
+.bg-primary\/5 {
+  background-color: hsl(var(--primary)/.05);
+}
+
+body {
+  font-family: 'Supreme', sans-serif;
+}
+
+.light body {
+  --tile: var(--neutral-100);
+}
+
+.dark body {
+  --tile: var(--neutral-900);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --tile: var(--neutral-900);
+  }
+}
+
+/* 3D Grid Animation */
+.griding-container {
+  position: absolute;
+  width: 150%;
+  height: 100%;
+  perspective: 500px;
+  transform-style: preserve-3d;
+  left: -50%;
+  overflow: hidden;
+}
+
+.griding {
+  position: absolute;
+  width: 150%;
+  height: 100%;
+  transform: rotateX(60deg) rotateZ(-45deg);
+  animation: moveGrid 20s linear infinite;
+  background-size: 50px 50px;
+  background-image: 
+    linear-gradient(90deg, rgba(66, 153, 225, 0.1) 1px, transparent 1px),
+    linear-gradient(rgba(66, 153, 225, 0.1) 1px, transparent 1px);
+}
+
+@keyframes moveGrid {
+  0% {
+    transform: rotateX(60deg) rotateZ(-45deg) translateY(0);
+  }
+  100% {
+    transform: rotateX(60deg) rotateZ(-45deg) translateY(-50px);
+  }
+}

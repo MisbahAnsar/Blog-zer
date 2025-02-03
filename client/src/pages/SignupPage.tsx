@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { ListTodo, Github, Twitter } from 'lucide-react';
+import { ListTodo } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { api } from '../utils/api'; // Assuming this is the correct path
+import { api } from '../utils/api';
 
 function App() {
   const [username, setUsername] = useState('');
@@ -15,9 +15,9 @@ function App() {
 
     try {
       const response = await api.signup({ username, email, password });
-      localStorage.setItem('token', response.token); // Store token
-      localStorage.setItem('isSignedUp', 'true'); // Set signup status
-      navigate('/'); // Redirect to landing page
+      localStorage.setItem('token', response.token);
+      localStorage.setItem('isSignedUp', 'true');
+      navigate('/');
     } catch (err) {
       setError('Error signing up. Please try again.');
     }
@@ -79,7 +79,7 @@ function App() {
                            bg-white dark:bg-gray-800 px-4 py-2 text-gray-900 dark:text-gray-100
                            focus:border-blue-500 focus:ring-blue-500 focus:ring-opacity-50
                            transition-colors duration-200"
-                  placeholder="johndoe"
+                  placeholder="sungjinwoo"
                 />
               </div>
 
@@ -98,7 +98,7 @@ function App() {
                            bg-white dark:bg-gray-800 px-4 py-2 text-gray-900 dark:text-gray-100
                            focus:border-blue-500 focus:ring-blue-500 focus:ring-opacity-50
                            transition-colors duration-200"
-                  placeholder="you@example.com"
+                  placeholder="jinwoo@example.com"
                 />
               </div>
 
@@ -137,44 +137,12 @@ function App() {
                 Create Account
               </button>
             </div>
-
-            <div className="relative">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-300 dark:border-gray-700"></div>
-              </div>
-              <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white dark:bg-black text-gray-500">Or continue with</span>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-3">
-              <button
-                type="button"
-                className="flex items-center justify-center px-4 py-2 border border-gray-300 
-                         dark:border-gray-700 rounded-md shadow-sm text-sm font-medium 
-                         text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-800
-                         hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200"
-              >
-                <Github className="h-5 w-5 mr-2" />
-                GitHub
-              </button>
-              <button
-                type="button"
-                className="flex items-center justify-center px-4 py-2 border border-gray-300 
-                         dark:border-gray-700 rounded-md shadow-sm text-sm font-medium 
-                         text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-800
-                         hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200"
-              >
-                <Twitter className="h-5 w-5 mr-2" />
-                Twitter
-              </button>
-            </div>
-
+            
             <div className="text-center text-sm">
               <span className="text-gray-500 dark:text-gray-400">Already have an account?</span>
               {' '}
-              <a href="#" className="font-medium text-blue-500 hover:text-blue-400">
-                Sign in instead
+              <a href="/signin" className="font-medium text-blue-500 hover:text-blue-400">
+                Sign in 
               </a>
             </div>
           </form>

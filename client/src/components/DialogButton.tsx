@@ -68,7 +68,7 @@ const DialogButton: React.FC<DialogButtonProps> = ({ onNewPost, buttonText }) =>
     <div className="gap-4 items-center">
       <Dialog>
         <DialogTrigger asChild>
-          <Button className="p-5 text-md" variant="outline">{buttonText}</Button>
+          <Button className="px-8 py-5 border border-black text-xl" variant="outline">{buttonText}</Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[500px] max-w-[350px]">
           <DialogHeader>

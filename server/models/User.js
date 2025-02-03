@@ -17,12 +17,15 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    coverImage: {
+        type: String,
+        required: false
+    },
 }, {timestamps: true });
 
-// Middleware to hash password before saving
 userSchema.pre('save', async function (next) {
     if (!this.isModified('password')) {
-      return next(); // Skip hashing if password is not modified
+      return next();
     }
     
     try {

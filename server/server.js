@@ -4,7 +4,8 @@ const connectDB = require('./config/db');
 const userRoutes = require('./routes/userRoutes');
 const postRoutes = require('./routes/postRoutes');
 const cors = require('cors'); 
-
+const path = require('path');
+const router = require('./routes/fileRoutes');
 // Load environment variables
 dotenv.config();
 
@@ -13,19 +14,21 @@ connectDB();
 
 const app = express();
 
-// app.use(cors({
-//     origin: 'http://localhost:5173', // Replace with your frontend URL
-//     credentials: true, // Allow cookies and credentials
-//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-//     allowedHeaders: ['Content-Type', 'Authorization'],
-// }));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.use(cors({
-    origin: "https://blogzers69.vercel.app",
-    credentials: true,
+    origin: 'http://localhost:5173', // Replace with your frontend URL
+    credentials: true, // Allow cookies and credentials
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
 }));
+
+// app.use(cors({
+//     origin: "https://blogzers69.vercel.app",
+//     credentials: true,
+//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//     allowedHeaders: ['Content-Type', 'Authorization'],
+// }));
 
 app.use(express.json());
 
@@ -37,6 +40,7 @@ app.get('/', (_req, res) => {
 //Routes
 app.use('/api/users', userRoutes);
 app.use('/api/posts', postRoutes);
+app.use('/api', router);
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
