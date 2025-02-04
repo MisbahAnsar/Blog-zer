@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // src/utils/api.ts
-const API_URL = 'https://blogzers.vercel.app/api';
+const API_URL = 'https://blogzers69.vercel.app/api';
 // const API_URL = 'http://localhost:5000/api';
 
 export const api = {
@@ -74,5 +74,34 @@ export const api = {
       },
     });
     return response;
-  }
+  },
+
+  // Upload Image
+  uploadImage: async (file: File) => {
+    const token = localStorage.getItem("token");
+    if (!token) throw new Error("You must be logged in to upload images");
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    const response = await fetch(`${API_URL}/upload`, {
+      method: "POST",
+      body: formData,
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    return response.json();
+  },
+
+  // Fetch User Images
+  getUserImages: async () => {
+    const token = localStorage.getItem("token");
+    if (!token) throw new Error("You must be logged in to view images");
+
+    const response = await fetch(`${API_URL}/images`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    return response.json();
+  },
 };  

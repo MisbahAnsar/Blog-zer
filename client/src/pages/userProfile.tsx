@@ -38,68 +38,31 @@ const UserProfile = () => {
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!file) return setMessage("No file selected")
-
-    if (hasUploadedImage) {
-      return setMessage("You have already uploaded a photo.")
-    }
-
-    const token = localStorage.getItem("token")
-    if (!token) return setMessage("You must be logged in to upload images")
-
-    const formData = new FormData()
-    formData.append("file", file)
+    e.preventDefault();
+    if (!file) return setMessage("No file selected");
+    if (hasUploadedImage) return setMessage("You have already uploaded a photo.");
 
     try {
-      const response = await fetch("http://localhost:5000/api/upload", {
-        method: "POST",
-        body: formData,
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-
-      const data = await response.json()
-      if (response.ok) {
-        setMessage("File uploaded successfully")
-        setImages([{ fileUrl: data.imagePath }])
-        setHasUploadedImage(true)
-      } else {
-        setMessage(`Error: ${data.error}`)
-      }
+      const data = await api.uploadImage(file);
+      setMessage("File uploaded successfully");
+      setImages([{ fileUrl: data.imagePath }]);
+      setHasUploadedImage(true);
     } catch (error) {
-      setMessage("Error uploading file")
+      setMessage("Error uploading file");
     }
-  }
+  };
 
   const fetchImages = async () => {
-    const token = localStorage.getItem("token")
-    if (!token) {
-      setMessage("You must be logged in to view images")
-      return
-    }
-
     try {
-      const response = await fetch("http://localhost:5000/api/images", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-
-      const data = await response.json()
-      if (response.ok) {
-        if (data.fileUrls.length > 0) {
-          setImages(data.fileUrls.map((url: string) => ({ fileUrl: url })))
-          setHasUploadedImage(true)
-        }
-      } else {
-        setMessage(`Error: ${data.error}`)
+      const data = await api.getUserImages();
+      if (data.fileUrls.length > 0) {
+        setImages(data.fileUrls.map((url: string) => ({ fileUrl: url })));
+        setHasUploadedImage(true);
       }
     } catch (error) {
-      setMessage("Error fetching images")
+      setMessage("Error fetching images");
     }
-  }
+  };
 
   useEffect(() => {
     const fetchUsername = async () => {
@@ -170,7 +133,7 @@ const UserProfile = () => {
         {/* Cover Image Section */}
         <div className="relative w-full h-56 sm:h-72 rounded-b-md overflow-hidden shadow-lg">
           {images.length > 0 ? (
-            <img src={`http://localhost:5000${images[0].fileUrl}`} alt="Cover" className="w-full h-full object-cover" />
+            <img src={`{images[0].fileUrl}`} alt="Cover" className="w-full h-full object-cover" />
           ) : (
             <div className="w-full h-full flex flex-col items-center justify-center bg-gray-300 rounded-md">
               <p className="text-gray-600 mb-2">No cover image</p>
