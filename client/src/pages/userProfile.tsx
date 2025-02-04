@@ -83,13 +83,13 @@ const UserProfile = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const postData = await api.getUserPosts();
-        setPosts(Array.isArray(postData.data) ? postData.data : []); // Ensure posts is always an array
-        setFilteredPosts(Array.isArray(postData.data) ? postData.data : []);
+        const postData = await api.getUserPosts()
+        setPosts(postData.data)
+        setFilteredPosts(postData.data)
       } catch (error: any) {
-        setError(error.message || "Failed to retrieve posts, please try again");
+        setError(error.message || "Failed to retrieve posts, please try again")
       }
-    }    
+    }
     fetchPosts()
   }, [])
 
