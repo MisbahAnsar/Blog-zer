@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Github, Twitter } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { api } from '../utils/api'; // Ensure your API utility is correctly imported
 

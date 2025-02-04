@@ -26,8 +26,6 @@ const UserProfile = () => {
   const [error, setError] = useState<string | null>(null)
   const [searchTerm, setSearchTerm] = useState("")
   const [filteredPosts, setFilteredPosts] = useState<Post[]>([])
-  const [coverImage, setCoverImage] = useState<string | null>(null)
-  const [imageMessage, setImageMessage] = useState<string>("")
   const [file, setFile] = useState<File | null>(null)
   const [images, setImages] = useState<ImageProps[]>([])
   const [message, setMessage] = useState<string>("")
