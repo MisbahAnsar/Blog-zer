@@ -83,26 +83,29 @@ const UserProfile = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const postData = await api.getUserPosts()
-        setPosts(postData.data)
-        setFilteredPosts(postData.data)
+        const postData = await api.getUserPosts();
+        setPosts(Array.isArray(postData.data) ? postData.data : []); // Ensure posts is always an array
+        setFilteredPosts(Array.isArray(postData.data) ? postData.data : []);
       } catch (error: any) {
-        setError(error.message || "Failed to retrieve posts, please try again")
+        setError(error.message || "Failed to retrieve posts, please try again");
       }
-    }
+    }    
     fetchPosts()
   }, [])
 
   useEffect(() => {
-    if (posts.length > 0) {
+    if (Array.isArray(posts) && posts.length > 0) {
       const results = posts.filter(
         (post) =>
           post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
           post.content.toLowerCase().includes(searchTerm.toLowerCase())
       );
       setFilteredPosts(results);
+    } else {
+      setFilteredPosts([]); // Ensure it's an array
     }
   }, [searchTerm, posts]);
+  
 
   const handleNewPost = (newPost: Post) => {
     setPosts((prevPosts) => [newPost, ...prevPosts]);
