@@ -23,12 +23,24 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 //     allowedHeaders: ['Content-Type', 'Authorization'],
 // }));
 
-app.use(cors({
-    origin: "https://blogzers69.vercel.app",
-    credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-}));
+const allowedOrigins = [
+    "https://blogzers69.vercel.app",
+    "https://blogzers.vercel.app",
+  ];
+  
+  app.use(cors({
+      origin: (origin, callback) => {
+          if (!origin || allowedOrigins.includes(origin)) {
+              callback(null, true);
+          } else {
+              callback(new Error("Not allowed by CORS"));
+          }
+      },
+      credentials: true,
+      methods: ['GET', 'POST', 'PUT', 'DELETE'],
+      allowedHeaders: ['Content-Type', 'Authorization'],
+  }));
+  
 
 app.use(express.json());
 
